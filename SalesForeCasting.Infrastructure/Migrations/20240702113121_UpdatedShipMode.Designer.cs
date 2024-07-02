@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SalesForeCasting.Infrastructure;
@@ -11,9 +12,11 @@ using SalesForeCasting.Infrastructure;
 namespace SalesForeCasting.Infrastructure.Migrations
 {
     [DbContext(typeof(SalesForeCastingDbContext))]
-    partial class SalesForeCastingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240702113121_UpdatedShipMode")]
+    partial class UpdatedShipMode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,6 +47,7 @@ namespace SalesForeCasting.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("PostalCode")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Region")
@@ -72,11 +76,8 @@ namespace SalesForeCasting.Infrastructure.Migrations
 
             modelBuilder.Entity("SalesForeCasting.Infrastructure.Entities.Product", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    b.Property<string>("ProductId")
+                        .HasColumnType("text");
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -86,10 +87,6 @@ namespace SalesForeCasting.Infrastructure.Migrations
                         .HasColumnType("numeric");
 
                     b.Property<string>("OrderId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ProductId")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -110,7 +107,7 @@ namespace SalesForeCasting.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("ProductId");
 
                     b.HasIndex("OrderId");
 

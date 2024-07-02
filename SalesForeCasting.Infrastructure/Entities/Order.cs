@@ -9,7 +9,7 @@ public class Order
 
     public DateTime ShipDate { get; set; }
 
-    public ShipMode ShipMode { get; set; }
+    public string ShipMode { get; set; }
 
     public string CustomerId { get; set; }
 
@@ -23,19 +23,21 @@ public class Order
 
     public string State { get; set; }
 
-    public string PostalCode { get; set; }
+    public string? PostalCode { get; set; }
 
     public string Region { get; set; }
 
     public List<Product> Products { get; set; }
+
+    public List<Return> Returns { get; set; }
     
 }
 
 
-public enum ShipMode
-{
-    StandardClass,
-    FirstClass,
-    SecondClass,
-    SameDay
-}
+// public enum ShipMode
+// {
+//     StandardClass,
+//     FirstClass,
+//     SecondClass,
+//     SameDay
+// }
