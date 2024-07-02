@@ -11,7 +11,7 @@ public class SalesForeCastingCommands
     [Verb]
     public void UploadForeCastingData([Required] string filePath)
     {
-        
+        Console.WriteLine(filePath);
     }
 
     /// <summary>

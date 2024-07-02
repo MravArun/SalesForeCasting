@@ -1,14 +1,9 @@
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices.JavaScript;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace SalesForeCasting.Infrastructure.Entities;
 
 public class Order
 {
-    [Key]
-    public long Id { get; set; }
     
     public string OrderId { get; set; }
 
@@ -31,6 +26,9 @@ public class Order
     public string PostalCode { get; set; }
 
     public string Region { get; set; }
+
+    public List<Product> Products { get; set; }
+    
 }
 
 

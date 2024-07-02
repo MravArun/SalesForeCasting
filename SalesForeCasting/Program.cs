@@ -1,4 +1,20 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using CLAP;
+using SalesForeCasting;
 
+public class Program
+{
+    static void Main(string[] args)
+    {
+        var cmds   = new SalesForeCastingCommands();
+        var parser = new Parser<SalesForeCastingCommands>();
 
-
+        try
+        {
+            parser.Run(args, cmds);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+    }
+}
